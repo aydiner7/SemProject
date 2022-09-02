@@ -76,6 +76,10 @@ namespace Bussiness.Concrete
             return null;
         }
 
+        public IDataResult<Teacher> GetByName(Teacher teacher)
+        {
+            return new SuccessDataResult<Teacher>(_teacherDal.Get(t => t.TeacherName == teacher.TeacherName));
+        }
     }
 }
 

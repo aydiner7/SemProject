@@ -25,7 +25,6 @@ namespace Core.Utilities.Security.JWT
         {
             Configuration = configuration;
             _tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
-
         }
 
         //Token üretilirken config dosyasına yazdığım değerler baz alınır.

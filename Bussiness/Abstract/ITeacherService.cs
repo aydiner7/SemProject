@@ -17,5 +17,7 @@ namespace Bussiness.Abstract
         IDataResult<List<Teacher>> GetAll();
 
         IDataResult<Teacher> GetById(int userId);
+
+        IDataResult<Teacher> GetByName(Teacher teacher);
     }
 }

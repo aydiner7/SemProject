@@ -1,6 +1,8 @@
 ﻿using Bussiness.Abstract;
 using Bussiness.BussinessAspect.Autofac;
 using Bussiness.Constants;
+using Bussiness.ValidationRules.FluentValidation;
+using Core.Aspects.AutoFac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -20,6 +22,7 @@ namespace Bussiness.Concrete
             _ipCheckDal = ipCheckDal;
         }
 
+        [ValidationAspect(typeof(IpCheckValidator))]
         [SecuredOperation("admin")]
         public IResult Add(IpCheck ipCheck)
         {
@@ -48,11 +51,12 @@ namespace Bussiness.Concrete
             return new SuccessDataResult<IpCheck>(_ipCheckDal.Get(u => u.IpAdres == Ip));
         }
 
-        //[SecuredOperation("admin")]
+        [ValidationAspect(typeof(IpCheckValidator))]
+        [SecuredOperation("admin")]
         public IResult Update(IpCheck ipCheck)
         {
             _ipCheckDal.Update(ipCheck);
-            return new SuccessResult("IP adresi ve URL Basariyla Guncellendi.");
+            return new SuccessResult(Messages.IpCheckControlUptated);
         }
 
 

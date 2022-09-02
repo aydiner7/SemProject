@@ -1,5 +1,6 @@
 ﻿using Bussiness.Abstract;
 using Bussiness.BussinessAspect.Autofac;
+using Bussiness.ValidationRules.FluentValidation;
 using Core.Aspects.AutoFac.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -31,11 +32,12 @@ namespace Bussiness.Concrete
             return new SuccessDataResult<Url>(_urlDal.Get(u => u.Id == Id));
         }
 
-        [SecuredOperation("admin")]
+        [ValidationAspect(typeof(UrlValidator))]
+        //[SecuredOperation("admin")]
         public IResult Update(Url url)
         {
             _urlDal.Update(url);
-            return new SuccessResult();
+            return new SuccessResult("Url Güncellendi.");
         }
     }
 }

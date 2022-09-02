@@ -23,6 +23,7 @@ namespace Bussiness.Constants
         public static string ProductNameAlreadyExists = "Ürün ismi zaten mevcut";
         public static string TeacherListed = "Ogretmen listelendi.";
         public static string IpCheckControlAdded = "IP adresine URL atamasi gerceklestirildi.";
+        public static string IpCheckControlUptated = "IP adresine URL güncellemesi gerceklestirildi.";
         public static string SameAddressCantBeUsed = "Aynı IP Adresi sadece 1 kez kullanılabilir.";
         public static string LessonDetailsListed = "Dersler Detaylı Olarak Listelendi.";
     }
