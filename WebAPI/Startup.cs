@@ -48,7 +48,7 @@ namespace WebAPI
             services.AddCors(); // Baþka projeden eriþim izni.
 
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
-
+            // Web API ye JWT kullanýlacaðý bildiriliyor.
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {

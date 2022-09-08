@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Core.Utilities.Security.JWT
 {
+    // istek gönderilirken gönderilen token bilgisi 
+    // Expiration : Bitiş zamanı ( 10 dakika ) olarak belirttim.
+
     public class AccessToken
     {
         public string Token { get; set; }

@@ -7,7 +7,8 @@ using System.Text;
 
 namespace Core.Extensions
 {
-    // Var olan nesneye veya class a yeni methotlar eklemek için
+    // Var olan nesneye veya class a yeni methotlar eklemek için // genişletmek.
+    // Bunun için hem class hemde method static olmak zorunda.
     // this interface(nesne adı) olarak kullanabiliriz.
     public static class ClaimExtensions
     {

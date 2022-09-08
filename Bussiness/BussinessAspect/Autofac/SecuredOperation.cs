@@ -11,6 +11,8 @@ using Bussiness.Constants;
 
 namespace Bussiness.BussinessAspect.Autofac
 {
+    // IHttpContextAccessor : JWT için. / Her istek için oluşan thread yönetimi.
+
     public class SecuredOperation : MethodInterception
     {
         private string[] _roles;

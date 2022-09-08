@@ -9,7 +9,7 @@ namespace Core.Utilities.Business
     {
         // İş motorumuz için çoklu method çalıştırabilme tekniği
         
-
+        // params : Run içerisine istenildiği kadar IResult girilebilir.
         public static IResult Run(params IResult[] logics)
         {
             foreach (var logic in logics)

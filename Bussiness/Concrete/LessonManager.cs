@@ -41,7 +41,7 @@ namespace Bussiness.Concrete
             return new SuccessResult();
         }
 
-        [SecuredOperation("admin")]
+        //[SecuredOperation("admin")]
         public IDataResult<List<Lesson>> GetAll()
         {
             return new SuccessDataResult<List<Lesson>>(_lessonDal.GetAll());

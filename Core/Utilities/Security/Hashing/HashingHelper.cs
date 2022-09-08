@@ -15,9 +15,10 @@ namespace Core.Utilities.Security.Hashing
         // password un Hashini hazırlayan methodum
         public static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
-            // Hashing oluştururken SHA512 algoritmasını kullanacağımı belirttim.
+            // Hashing oluştururken SHA512 algoritmasını kullanacağımı belirttim. / .NET Cryptography
             using (var hmac = new System.Security.Cryptography.HMACSHA512())
             {
+                // Salt için : Algoritmanın Key değerini kullandım, farklı bir değer de kullanılabilir.
                 passwordSalt = hmac.Key;
                 passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
             }

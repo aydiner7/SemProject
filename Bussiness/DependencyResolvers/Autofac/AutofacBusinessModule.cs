@@ -22,8 +22,6 @@ namespace Business.DependencyResolvers.Autofac
             // Data taşıma gibi işlemlerde kullanmayacaksak, SingleInstance.
             // SingleInstance 1 referans numarası oluşturup, her işlemde onu kullanır.
             // Bunu kullanma sebebim, sadece method çalışmak için ihtiyacım olması.
-            // builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
-            // builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
 
             //Teacher
             builder.RegisterType<TeacherManager>().As<ITeacherService>().SingleInstance();
@@ -47,11 +45,19 @@ namespace Business.DependencyResolvers.Autofac
 
 
 
-            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
+            // Autofac aynı zamanda bize interceptors görevi verir. Tercih Sebebi.
+            // Autofac tüm sınıflar için önce AspectInterceptorSelector ' ı çağır
+            // Sınıflara ait Aspect var mı? kontrolü yapılır.
+
+
+            // Çalışan uygulama içerisinde
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            // implemente edilmiş interfaceleri bul.
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
                 .EnableInterfaceInterceptors(new ProxyGenerationOptions()
                 {
+                    // onlar için AspectInterceptorSelector() ' ı çağır.
                     Selector = new AspectInterceptorSelector()
                 }).SingleInstance();
         }

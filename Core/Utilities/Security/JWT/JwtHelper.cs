@@ -21,6 +21,7 @@ namespace Core.Utilities.Security.JWT
         // API nin appsetting dosyasına yazdığımız config kısıtlamalarını çekerek işlem yapar.
         // IConfiguration : API deki config dosyamı okumaya yarıyor.
         // TokenOptions : Okunan değerleri tutar.
+        // DateTime : Tokenin geçersizleşeceği zamanı tutar.
         public JwtHelper(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -30,7 +31,7 @@ namespace Core.Utilities.Security.JWT
         //Token üretilirken config dosyasına yazdığım değerler baz alınır.
         public AccessToken CreateToken(User denemeUser, List<OperationClaim> operationClaims)
         {
-            _accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);
+            _accessTokenExpiration = DateTime.Now.AddMinutes(_tokenOptions.AccessTokenExpiration);              
             var securityKey = SecurityKeyHelper.CreateSecurityKey(_tokenOptions.SecurityKey);
             var signingCredentials = SigningCredentialsHelper.CreateSigningCredentials(securityKey);
             var jwt = CreateJwtSecurityToken(_tokenOptions, denemeUser, signingCredentials, operationClaims);
@@ -61,7 +62,8 @@ namespace Core.Utilities.Security.JWT
         }
 
         // .Net de var olan Claim in içeriği yetersiz olduğu için nesneye yeni methotlar ekledim.
-        
+        // Kullanıcıya ait tüm claimleri listele.
+        // IEnumerable : base List<Claim>
         private IEnumerable<Claim> SetClaims(User denemeUser, List<OperationClaim> operationClaims)
         {
             var claims = new List<Claim>();

@@ -8,11 +8,13 @@ namespace Core.Extensions
 {
     public static class ClaimsPrincipalExtensions
     {
-        // .Net için claims lere erişim için ClaimsPrincipal kullandık.
-        // Her seferinde yazmak yerine geniş çaplı kullanabileceğimiz methot haline getirdik.
+        // .Net için claims lere erişim için ClaimsPrincipal kullanıldı.
+        // Her seferinde yazmak yerine geniş çaplı kullanabileceğimiz methot haline getirildi.
+        // JWT dan gelen claimleri okumak için kullanıldı.
 
         public static List<string> Claims(this ClaimsPrincipal claimsPrincipal, string claimType)
         {
+            // ? : null olabilir.
             var result = claimsPrincipal?.FindAll(claimType)?.Select(x => x.Value).ToList();
             return result;
         }

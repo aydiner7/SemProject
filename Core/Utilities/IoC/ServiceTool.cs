@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Core.Utilities.IoC
 {
+    //Web API da veya Autofac da injection alma
+    //Interfacelerın servis karşılıklarını buluyoruz.
+
     public static class ServiceTool
     {
         public static IServiceProvider ServiceProvider { get; private set; }

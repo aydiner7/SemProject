@@ -21,6 +21,18 @@ namespace Core.CrossCuttingConcerns.Validation
             {
                 throw new ValidationException(result.Errors);
             }
-        }        
+        }
+
+        //ValidationTool.Validate(new LessonValidator(), lesson)    // Aspect Öncesi kullanım şekli
+
+            // Generic Yapıya Döndü.
+
+        //var context = new ValidationContext<Lesson>(lesson);
+        //LessonValidator lessonValidator = new LessonValidator();
+        //var result = lessonValidator.Validate(lesson);
+        //if (!result.IsValid)
+	    //      {
+        //            throw new ValidationException(result.Errors);
+        //      }
     }
 }
