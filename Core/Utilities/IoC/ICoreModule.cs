@@ -9,5 +9,6 @@ namespace Core.Utilities.IoC
     {
         // Injectionslarım için oluşturduğum interface.
         void Load(IServiceCollection serviceDescriptors);
+        // oluşturduğumuz servisleri vereceğiz ve yükleme işlemi burada gerçekleşecek.
     }
 }

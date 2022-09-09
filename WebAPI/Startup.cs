@@ -64,7 +64,10 @@ namespace WebAPI
                     };
                 });
             // Sonrasýnda oluþturulabilecek bir çok modülü ekleyebilmek
-            services.AddDependencyResolvers(new ICoreModule[] {new CoreModule() });
+            // CoreModule gibi bir çok Module ekleyebileceðim.
+            services.AddDependencyResolvers(new ICoreModule[] {
+                new CoreModule() 
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

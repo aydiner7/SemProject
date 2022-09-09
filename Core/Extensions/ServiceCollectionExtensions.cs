@@ -9,7 +9,10 @@ namespace Core.Extensions
     public static class ServiceCollectionExtensions
     {
         // Eklenecek tüm injectionsları tek bir yerde kontrol edebildiğim nokta
-        //polimorfizm
+        // this: genişletmek istediğim 
+        // 
+
+        // IServiceCollection : API nin servis bağımlılıklarını veya araya girmesini istediğimiz koleksiyonumuz.
         public static IServiceCollection AddDependencyResolvers(this IServiceCollection serviceCollection, ICoreModule[] modules)
         {
             foreach (var module in modules)
@@ -17,6 +20,7 @@ namespace Core.Extensions
                 module.Load(serviceCollection);
             }
 
+            // Oluşturulan tüm servisleri 
             return ServiceTool.Create(serviceCollection);
         }
     }

@@ -23,6 +23,7 @@ namespace Business.DependencyResolvers.Autofac
             // SingleInstance 1 referans numarası oluşturup, her işlemde onu kullanır.
             // Bunu kullanma sebebim, sadece method çalışmak için ihtiyacım olması.
 
+
             //Teacher
             builder.RegisterType<TeacherManager>().As<ITeacherService>().SingleInstance();
             builder.RegisterType<EfTeacherDal>().As<ITeacherDal>().SingleInstance();
